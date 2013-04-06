@@ -5,10 +5,10 @@ gem 'rails', '3.2.13'
 
 group :assets do
   gem 'coffee-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
   gem 'compass-rails'
   gem 'compass_twitter_bootstrap'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
 gem 'activeadmin', "0.5.1"
@@ -26,7 +26,6 @@ gem 'thin'
 
 group :development do
   gem 'better_errors'
-  gem 'jazz_hands'
   gem 'binding_of_caller', :platforms => [:mri_19, :rbx]
   gem 'html2haml'
   gem 'quiet_assets'
@@ -40,6 +39,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'jazz_hands'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
