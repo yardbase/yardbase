@@ -259,29 +259,29 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
-  better_errors (>= 0.7.2)
-  binding_of_caller (>= 0.7.1)
-  cancan (>= 1.6.9)
-  capybara (>= 2.0.3)
-  coffee-rails (~> 3.2.1)
+  better_errors
+  binding_of_caller
+  cancan
+  capybara
+  coffee-rails
   database_cleaner (>= 1.0.0.RC1)
   decent_exposure
-  devise (>= 2.2.3)
+  devise
   draper
-  email_spec (>= 1.4.0)
-  factory_girl_rails (>= 4.2.0)
-  figaro (>= 0.6.3)
-  haml-rails (>= 0.4)
-  html2haml (>= 1.0.1)
+  email_spec
+  factory_girl_rails
+  figaro
+  haml-rails
+  html2haml
   jquery-rails
-  mongoid (>= 3.1.2)
-  mongoid-rspec (>= 1.7.0)
-  quiet_assets (>= 1.0.2)
+  mongoid
+  mongoid-rspec
+  quiet_assets
   rails (= 3.2.13)
-  rolify (>= 3.2.0)
-  rspec-rails (>= 2.12.2)
-  sass-rails (~> 3.2.3)
-  simple_form (>= 2.1.0)
-  thin (>= 1.5.0)
-  uglifier (>= 1.0.3)
-  unicorn (>= 4.3.1)
+  rolify
+  rspec-rails
+  sass-rails
+  simple_form
+  thin
+  uglifier
+  unicorn
