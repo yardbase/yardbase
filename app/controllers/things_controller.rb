@@ -6,8 +6,9 @@ protected
   def collection
     @things ||= begin
 			chain = end_of_association_chain
-			chain = chain.where(tags: params[:tags]) if params.has_key?(:tags)
-			chain = chain.where(name: params[:name]) if params.has_key?(:name)
+			request.query_parameters.each_key do |key|
+				chain = chain.where(key => params[key])
+			end
 			chain
 		end
   end
