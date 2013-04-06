@@ -1,8 +1,8 @@
-h1. Yardbase
+# Yardbase
 
-This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.com/.
+This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem provided by the [RailsApps Project](http://railsapps.github.com/).
 
-h2. Diagnostics
+## Diagnostics
 
 This application was built with recipes that are NOT known to work together.
 
@@ -12,26 +12,34 @@ If the application doesn't work as expected, please "report an issue":https://gi
 
 We'd also like to know if you've found combinations of recipes or preferences that do work together.
 
-Recipes:
-["controllers", "extras", "gems", "git", "init", "models", "readme", "routes", "setup", "testing", "views"]
+    Recipes:
+    ["controllers", "extras", "gems", "git", "init", "models",
+     "readme", "routes", "setup", "testing", "views"]
 
-Preferences:
-{:git=>true, :dev_webserver=>"thin", :prod_webserver=>"unicorn", :database=>"mongodb", :orm=>"mongoid", :templates=>"haml", :unit_test=>"rspec", :integration=>"rspec-capybara", :continuous_testing=>"none", :fixtures=>"factory_girl", :email=>"none", :authentication=>"devise", :devise_modules=>"default", :authorization=>"cancan", :form_builder=>"simple_form", :starter_app=>"admin_app", :rvmrc=>true, :quiet_assets=>true, :local_env_file=>true, :better_errors=>true, :ban_spiders=>true}
+    Preferences:
+    {:git=>true, :dev_webserver=>"thin", :prod_webserver=>"unicorn",
+     :database=>"mongodb", :orm=>"mongoid", :templates=>"haml",
+     :unit_test=>"rspec", :integration=>"rspec-capybara",
+     :continuous_testing=>"none", :fixtures=>"factory_girl",
+     :email=>"none", :authentication=>"devise", :devise_modules=>"default",
+     :authorization=>"cancan", :form_builder=>"simple_form",
+     :starter_app=>"admin_app", :rvmrc=>true, :quiet_assets=>true,
+     :local_env_file=>true, :better_errors=>true, :ban_spiders=>true}
 
-h2. Ruby on Rails
+## Ruby on Rails
 
 This application requires:
 
 * Ruby version 1.9.3
 * Rails version 3.2.13
 
-Learn more about "Installing Rails":http://railsapps.github.com/installing-rails.html.
+Learn more about [Installing Rails](http://railsapps.github.com/installing-rails.html).
 
-h2. Database
+## Database
 
 This application uses MongoDB with the Mongoid ORM.
 
-h2. Development
+## Development
 
 * Template Engine: Haml
 * Testing Framework: RSpec and Factory Girl
@@ -44,23 +52,23 @@ h2. Development
 
 
 
-h2. Getting Started
+## Getting Started
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-h2. Documentation and Support
+## Documentation and Support
 
 This is the only documentation.
 
-h4. Issues
+### Issues
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-h2. Similar Projects
+## Similar Projects
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-h2. Contributing
+## Contributing
 
 If you make improvements to this application, please share with others.
 
@@ -71,10 +79,10 @@ If you make improvements to this application, please share with others.
 
 If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
 
-h2. Credits
+## Credits
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-h2. License
+## License
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
