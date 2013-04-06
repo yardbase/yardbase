@@ -6,6 +6,8 @@ group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
   gem 'uglifier'
+  gem 'compass-rails'
+  gem 'compass_twitter_bootstrap'
 end
 
 gem 'activeadmin'
