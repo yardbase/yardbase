@@ -10,4 +10,5 @@
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
-ROLES: [admin, user, VIP]
+ROLES: [admin, user]
+SECRET_TOKEN: '660d05da491ba2ba9a2b13161ab812034e9ed2a1afcf18a39fc3a1a736ccb45d5337d0aa8ba60c2adcd66ba563af3d32ca1b1ff8f64b39c5290790229e75a65e'
