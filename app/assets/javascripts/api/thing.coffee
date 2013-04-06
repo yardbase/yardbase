@@ -1,2 +1,1 @@
-class Yardbase.Thing extends Backbone.Model
-  urlRoot: '/api/things'
+class Yardbase.Thing 
