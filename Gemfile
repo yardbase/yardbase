@@ -22,6 +22,7 @@ gem 'simple_form'
 
 group :development do
   gem 'better_errors'
+  gem 'jazz_hands'
   gem 'binding_of_caller', :platforms => [:mri_19, :rbx]
   gem 'html2haml'
   gem 'quiet_assets'
