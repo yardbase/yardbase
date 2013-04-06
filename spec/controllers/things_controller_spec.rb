@@ -30,10 +30,27 @@ describe ThingsController do
       describe 'other parameters' do
 				describe 'key value pair' do
 					let(:params) { {name: 'Indie Coffee'} }
+
 					before do
             FactoryGirl.create(:tag, :coffeeshop)
             @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
 					end
+
+					it 'returns only objects with the specified key and value' do
+            get :index, params
+            expect(assigns[:things].to_a).to include(@indie_coffee)
+					end
+				end
+
+				describe 'key value pair, nested inside of tag name' do
+					let(:params) { {'coffeeshop.url' => 'http://indiecoffeehouse.com'} }
+
+					before do
+            FactoryGirl.create(:tag, :coffeeshop)
+            @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
+						Thing.where(name: 'Indie Coffee').update(:"coffeeshop.url" => 'http://indiecoffeehouse.com')
+					end
+
 					it 'returns only objects with the specified key and value' do
             get :index, params
             expect(assigns[:things].to_a).to include(@indie_coffee)
