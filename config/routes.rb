@@ -1,6 +1,7 @@
 Yardbase::Application.routes.draw do
   resources :tags
   resources :things
+  resources :coffee_shops
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
