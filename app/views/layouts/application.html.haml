@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %title Yardbase
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %button{type: 'button', class: 'btn btn-navbar', data: {toggle: 'collapse', target: '.nav-collapse'}}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'YardBase', root_path, class: 'brand'
+          .nav-collapse.collapse
+            %ul.nav
+              %li.active= link_to 'Home', root_path
+              %li= link_to 'Getting Started', '#TODO'
+
+    = yield

@@ -1,4 +1,12 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+.jumbotron.masthead
+  .container
+    %h1 Yardbase
+    %p Some text convincing you of Yardbase's utility. :D
+    %p
+      = link_to 'Download YardBase', '#TODO', class: 'btn btn-primary btn-large'
+
+    %ul.masthead-links
+      %li= link_to 'GitHub Project', 'https://github.com/yardbase/yardbase'
+      %li= link_to 'Examples', '#TODO'
+      %li= link_to "Madison's Yardbase", '#TODO'
+      %li Version 0.0.1
