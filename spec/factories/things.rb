@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :coffeeshop, class: Thing do
     name 'A Coffeeshop'
@@ -7,7 +5,6 @@ FactoryGirl.define do
 
     after(:build) do |thing, evaluator|
       thing[:coffeeshop] = {
-        name: 'Coffeeshop name',
         address: '123 Main St',
         phone_number: '608-555-1234'
       }

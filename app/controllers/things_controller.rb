@@ -4,6 +4,11 @@ class ThingsController < InheritedResources::Base
 protected
 
   def collection
-    @things ||= end_of_association_chain.where(tags: params[:tags])
+    @things ||= begin
+			chain = end_of_association_chain
+			chain = chain.where(tags: params[:tags]) if params.has_key?(:tags)
+			chain = chain.where(name: params[:name]) if params.has_key?(:name)
+			chain
+		end
   end
 end

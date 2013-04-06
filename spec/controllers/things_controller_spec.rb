@@ -22,12 +22,24 @@ describe ThingsController do
           end
         end
 
-        context 'with many items' do
-          it 'returns only objects that have all the tags'
+        context 'with multiple tags' do
+          it 'returns only objects that have all the specified tags'
         end
       end
 
-      describe 'other parameters'
+      describe 'other parameters' do
+				describe 'key value pair' do
+					let(:params) { {name: 'Indie Coffee'} }
+					before do
+            FactoryGirl.create(:tag, :coffeeshop)
+            @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
+					end
+					it 'returns only objects with the specified key and value' do
+            get :index, params
+            expect(assigns[:things].to_a).to include(@indie_coffee)
+					end
+				end
+			end
     end
   end
 end
