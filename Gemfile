@@ -11,7 +11,7 @@ group :assets do
   gem 'compass_twitter_bootstrap'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', "0.5.1"
 gem 'cancan'
 gem 'decent_exposure'
 gem 'devise'
