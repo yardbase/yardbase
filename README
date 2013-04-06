@@ -1,4 +1,19 @@
-RECIPES
+Yardbase
+========================
+
+This application was generated with the rails_apps_composer gem:
+https://github.com/RailsApps/rails_apps_composer
+provided by the RailsApps Project:
+http://railsapps.github.com/
+
+________________________
+
+Recipes:
 ["controllers", "extras", "gems", "git", "init", "models", "readme", "routes", "setup", "testing", "views"]
-PREFERENCES
-{:git=>true, :dev_webserver=>"thin", :prod_webserver=>"unicorn", :database=>"mongodb", :orm=>"mongoid", :templates=>"haml", :unit_test=>"rspec", :integration=>"rspec-capybara", :continuous_testing=>"none", :fixtures=>"factory_girl", :email=>"none", :authentication=>"devise", :devise_modules=>"default", :authorization=>"cancan", :form_builder=>"simple_form", :starter_app=>"admin_app"}
+
+Preferences:
+{:git=>true, :dev_webserver=>"thin", :prod_webserver=>"unicorn", :database=>"mongodb", :orm=>"mongoid", :templates=>"haml", :unit_test=>"rspec", :integration=>"rspec-capybara", :continuous_testing=>"none", :fixtures=>"factory_girl", :email=>"none", :authentication=>"devise", :devise_modules=>"default", :authorization=>"cancan", :form_builder=>"simple_form", :starter_app=>"admin_app", :rvmrc=>true, :quiet_assets=>true, :local_env_file=>true, :better_errors=>true, :ban_spiders=>true}
+
+________________________
+
+License
