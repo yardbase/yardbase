@@ -13,8 +13,7 @@ describe 'Coffeeshop functional spec' do
     wifi_tag = Tag.new(name: 'wifi', required_fields: [
       {name: 'free', type: 'boolean'}
     ], optional_fields: [
-      {name: 'token', type: 'boolean'},
-      {name: 'time_limited', type: 'boolean'}
+      {name: 'token', type: 'boolean'}
     ])
 
     indie_coffee = Thing.new(
