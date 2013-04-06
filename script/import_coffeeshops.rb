@@ -24,8 +24,8 @@ CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
 
     Thing.create(
       tags: %w(coffeeshop wifi),
+      name: row[:name],
       coffeeshop: {
-        name: row[:name],
         address: [row[:address1], row[:address2]].join(', '),
         phone_number: row[:phone],
         url: row[:url]
