@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'mongoid'
 gem 'rolify'
 gem 'simple_form'
+gem 'thin'
 
 group :development do
   gem 'better_errors'
@@ -40,7 +41,6 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'thin'
 end
 
 gem 'unicorn', :group => :production
