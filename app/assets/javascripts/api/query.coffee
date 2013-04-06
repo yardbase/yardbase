@@ -14,7 +14,7 @@ class Yardbase.Query
 
   url: ->
     url = "http://yardbase.herokuapp.com/things?" 
-    params = ["jsonp=YardbaseCallback"]
+    params = []
     if @tag_list.length > 0
       params.push "tags=" + encodeURIComponent(@tag_list.join(','))
 
