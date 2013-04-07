@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :tag do
     name 'TagName'
@@ -8,7 +6,6 @@ FactoryGirl.define do
       name 'coffeeshop'
 
       required_fields [
-        {name: 'name', type: 'string'},
         {name: 'address', type: 'string'},
         {name: 'phone_number', type: 'string'}
       ]
@@ -17,5 +14,13 @@ FactoryGirl.define do
         {name: 'url', type: 'string'}
       ]
     end
-  end
+
+		trait :wifi do
+			name 'wifi'
+
+			required_fields [
+				{name: 'free', type: 'boolean'}
+			]
+		end
+	end
 end

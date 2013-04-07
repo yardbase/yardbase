@@ -9,6 +9,7 @@ describe ThingsController do
           let(:params) { {tags: 'coffeeshop', format: :json} }
           before do
             FactoryGirl.create(:tag, :coffeeshop)
+            FactoryGirl.create(:tag, :wifi)
             @coffeeshop = FactoryGirl.create(:coffeeshop)
             @person = FactoryGirl.create(:person)
           end
@@ -33,6 +34,7 @@ describe ThingsController do
 
 					before do
             FactoryGirl.create(:tag, :coffeeshop)
+            FactoryGirl.create(:tag, :wifi)
             @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
 					end
 
@@ -47,6 +49,7 @@ describe ThingsController do
 
 					before do
             FactoryGirl.create(:tag, :coffeeshop)
+            FactoryGirl.create(:tag, :wifi)
             @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
 						Thing.where(name: 'Indie Coffee').update(:"coffeeshop.url" => 'http://indiecoffeehouse.com')
 					end
