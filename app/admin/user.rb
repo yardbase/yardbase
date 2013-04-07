@@ -1,4 +1,8 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register User do
+  controller do
+    before_filter :skip_sidebar!
+  end
+
   index do
     column :email
     column :current_sign_in_at
