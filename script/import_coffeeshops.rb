@@ -46,9 +46,11 @@ CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
       music_event: {
         venue: row[:venue],
         band: row[:band],
+        genre: row[:genre],
         address: row[:address],
         date: row[:date],
-        time: row[:time]
+        time: row[:time],
+        url: row[:url]
       },
       location: location
     ).tap {|thing| puts thing.errors.inspect if thing.errors.present? }
