@@ -15,12 +15,16 @@ FactoryGirl.define do
       ]
     end
 
-		trait :wifi do
-			name 'wifi'
+    trait :wifi do
+      name 'wifi'
 
-			required_fields [
-				{name: 'free', type: 'boolean'}
-			]
-		end
-	end
+      required_fields [
+        {name: 'free', type: 'boolean'}
+      ]
+    end
+
+    trait :person do
+      name 'person'
+    end
+  end
 end

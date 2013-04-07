@@ -1,96 +1,63 @@
 require 'spec_helper'
 
 describe ThingsController do
+
   describe 'index' do
-    before do
-      FactoryGirl.create(:tag, :coffeeshop)
-      FactoryGirl.create(:tag, :wifi)
-    end
+    let!(:cs_tag) { FactoryGirl.create(:tag, :coffeeshop) }
+    let!(:person_tag) { FactoryGirl.create(:tag, :person) }
+    let!(:wifi_tag) { FactoryGirl.create(:tag, :wifi) }
+
+    let!(:coffeeshop) { FactoryGirl.create(:coffeeshop) }
+    let!(:person) { FactoryGirl.create(:person) }
+    let!(:library) { FactoryGirl.create(:library) }
+
+    subject { assigns[:things].to_a }
+    before { get :index, params }
 
     context 'searching' do
       describe 'tags parameter' do
         context 'with one item' do
-          let(:params) { {tags: 'coffeeshop', format: :json} }
-          before do
-            @coffeeshop = FactoryGirl.create(:coffeeshop)
-            @person = FactoryGirl.create(:person)
-            @library = FactoryGirl.create(:library)
-          end
-          it 'returns objects that have the tag' do
-            get :index, params
-            expect(assigns[:things].to_a).to include(@coffeeshop)
-          end
-          it 'does not return objects that do not have any tags' do
-            get :index, params
-            expect(assigns[:things].to_a).to_not include(@person)
-          end
-          it 'does not return objects that do not have the tag, but have a different tag' do
-            get :index, params
-            expect(assigns[:things].to_a).to_not include(@library)
-          end
+          let(:params) { {tags: 'coffeeshop'} }
+
+          it { should include coffeeshop }
+          it { should_not include person }
+          it { should_not include library }
         end
 
         context 'with multiple tags, wifi first' do
-          let(:params) { {tags: 'wifi,coffeeshop', format: :json} }
-          before do
-            @coffeeshop = FactoryGirl.create(:coffeeshop)
-            @library = FactoryGirl.create(:library)
-          end
-          it 'returns objects that have both the tags' do
-            get :index, params
-            expect(assigns[:things].to_a).to include(@coffeeshop)
-          end
-          it 'does not return objects that only have one of the tags' do
-            get :index, params
-            expect(assigns[:things].to_a).to_not include(@library)
-          end
+          let(:params) { {tags: 'wifi,coffeeshop'} }
+
+          it { should include coffeeshop }
+          it { should_not include library }
         end
 
         context 'with multiple tags, coffeeshop first' do
-          let(:params) { {tags: 'coffeeshop,wifi', format: :json} }
-          before do
-            @coffeeshop = FactoryGirl.create(:coffeeshop)
-            @library = FactoryGirl.create(:library)
-          end
-          it 'returns objects that have both the tags' do
-            get :index, params
-            expect(assigns[:things].to_a).to include(@coffeeshop)
-          end
-          it 'does not return objects that only have one of the tags' do
-            get :index, params
-            expect(assigns[:things].to_a).to_not include(@library)
-          end
+          let(:params) { {tags: 'coffeeshop,wifi'} }
+
+          it { should include coffeeshop }
+          it { should_not include library }
         end
       end
 
       describe 'other parameters' do
-				describe 'key value pair' do
-					let(:params) { {name: 'Indie Coffee'} }
+        let!(:indie_coffee) { FactoryGirl.create(:coffeeshop, name: 'Indie Coffee') }
 
-					before do
-            @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
-					end
+        describe 'key value pair' do
+          let(:params) { {name: 'Indie Coffee'} }
 
-					it 'returns only objects with the specified key and value' do
-            get :index, params
-            expect(assigns[:things].to_a).to include(@indie_coffee)
-					end
-				end
+          it { should include indie_coffee }
+        end
 
-				describe 'key value pair, nested inside of tag name' do
-					let(:params) { {'coffeeshop.url' => 'http://indiecoffeehouse.com'} }
+        describe 'key value pair, nested inside of tag name' do
+          let(:params) { {'coffeeshop.url' => 'http://indiecoffeehouse.com'} }
 
-					before do
-            @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
-						Thing.where(name: 'Indie Coffee').update(:"coffeeshop.url" => 'http://indiecoffeehouse.com')
-					end
+          before do
+            Thing.where(name: 'Indie Coffee').update(:"coffeeshop.url" => 'http://indiecoffeehouse.com')
+          end
 
-					it 'returns only objects with the specified key and value' do
-            get :index, params
-            expect(assigns[:things].to_a).to include(@indie_coffee)
-					end
-				end
-			end
+          it { should include indie_coffee }
+        end
+      end
     end
   end
 end

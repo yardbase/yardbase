@@ -9,13 +9,13 @@ protected
 
   def collection
     @things ||= begin
-			chain = end_of_association_chain
+      chain = end_of_association_chain
 
-			request.query_parameters.each do |key, value|
+      request.query_parameters.each do |key, value|
         chain = chain.all(key => value.split(','))
-			end
+      end
 
-			chain
-		end
+      chain
+    end
   end
 end
