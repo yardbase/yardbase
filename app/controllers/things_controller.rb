@@ -12,7 +12,7 @@ protected
       chain = end_of_association_chain
 
       request.query_parameters.each do |key, value|
-        chain = chain.all(key => value.split(','))
+        chain = chain.all(key => value.split(',')) unless key.to_s == 'jsonpCallback'
       end
 
       chain

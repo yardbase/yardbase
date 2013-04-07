@@ -17,7 +17,7 @@ describe ThingsController do
     context 'searching' do
       describe 'tags parameter' do
         context 'with one item' do
-          let(:params) { {tags: 'coffeeshop'} }
+          let(:params) { {tags: 'coffeeshop', jsonpCallback: 'Yardbase.Query.callbacks[1365350292336]'} }
 
           it { should include coffeeshop }
           it { should_not include person }
