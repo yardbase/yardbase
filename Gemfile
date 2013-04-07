@@ -23,6 +23,7 @@ gem 'mongoid'
 gem 'rolify'
 gem 'simple_form'
 gem 'thin'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'

@@ -18,12 +18,22 @@ wifi_tag = Tag.create(name: 'wifi', required_fields: [
   {name: 'time_limited', type: 'boolean'}
 ]) unless Tag.where(name: 'wifi').any?
 
+location_tag = Tag.create(name: 'location', required_fields: [
+  {name: 'lat', type: 'float'},
+  {name: 'lng', type: 'float'}
+])
+
 filename = Rails.root.join('db', 'seeds', 'madison', 'coffee.csv')
 CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
   csv.each do |row|
     wifi = {}
     wifi[:free] = %w(free token).include?(row[:wifi])
     wifi[:token] = true if row[:wifi] == 'token'
+
+    sleep 0.5
+    res = Geocoder.coordinates([row[:address1], row[:address2]].join(' '))
+    puts res
+    location = {lat: res[0], lng: res[1]}
 
     Thing.create(
       tags: %w(coffeeshop wifi),
@@ -33,7 +43,8 @@ CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
         phone_number: row[:phone],
         url: row[:url]
       },
-      wifi: wifi
+      wifi: wifi,
+      location: location
     ).tap {|thing| puts thing.errors.inspect if thing.errors.present? }
   end
 end
