@@ -73,7 +73,7 @@ module Yardbase
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.assets.precompile += ['api.js']
+    config.assets.precompile += %w( api.js active_admin.css active_admin.js active_admin/print.css )
 
   end
 end
