@@ -48,6 +48,11 @@ describe ThingsController do
           it { should include indie_coffee }
         end
 
+        describe 'with a boolean value' do
+          let(:params) { {'wifi.free' => 'true'} }
+          it { should include indie_coffee }
+        end
+
         describe 'key value pair, nested inside of tag name' do
           let(:params) { {'coffeeshop.url' => 'http://indiecoffeehouse.com'} }
 
