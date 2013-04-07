@@ -23,6 +23,39 @@ location_tag = Tag.create(name: 'location', required_fields: [
   {name: 'lng', type: 'float'}
 ])
 
+music_event_tag = Tag.create(name: 'music_event', required_fields:[
+  {name: 'band', type: 'string'},
+  {name: 'venue', type: 'string'},
+  {name: 'address', type: 'string'},
+  {name: 'date', type: 'string'},
+  {name: 'time', type: 'string'}
+])
+
+filename = Rails.root.join('db', 'seeds', 'madison', 'music.csv')
+CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
+  csv.each do |row|
+
+    sleep 0.5
+    res = Geocoder.coordinates(row[:address])
+    puts res
+    location = {lat: res[0], lng: res[1]}
+
+    Thing.create(
+      tags: %w(music_event location),
+      name: row[:band] + ' at ' + row[:venue],
+      music_event: {
+        venue: row[:venue],
+        band: row[:band],
+        address: row[:address],
+        date: row[:date],
+        time: row[:time]
+      },
+      location: location
+    ).tap {|thing| puts thing.errors.inspect if thing.errors.present? }
+  end
+end
+
+
 filename = Rails.root.join('db', 'seeds', 'madison', 'coffee.csv')
 CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
   csv.each do |row|
@@ -36,7 +69,7 @@ CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
     location = {lat: res[0], lng: res[1]}
 
     Thing.create(
-      tags: %w(coffeeshop wifi),
+      tags: %w(coffeeshop wifi location),
       name: row[:name],
       coffeeshop: {
         address: [row[:address1], row[:address2]].join(', '),
