@@ -14,6 +14,24 @@ API Usage:
 
     </script>
 
+## Installation
+
+Yardbase is **ALPHA** software, so please be aware that it doesn't really do everything we'd like so far.
+For example, the data-entry mechanism is not exactly friendly yet.
+
+Prerequisites for development are:
+
+* ruby 1.9.3 or greater
+* bundler
+* mongodb
+
+You can deploy to any rails-capable server (think Linux/Unix),
+but we recommend deploying to heroku with the mongohq sandbox plan.
+
+    $ heroku apps:create
+    $ heroku addons:add mongohq:sandbox
+    $ git push heroku master
+
 ## Contributing
 
 If you make improvements to this application, please share with others.
