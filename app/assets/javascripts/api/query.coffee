@@ -1,6 +1,11 @@
 class Yardbase.Query
   queryParams: {}
   tag_list: []
+  @jsonpCallbacks: {}
+  defaultCallback: (result) -> 
+    console?.log 'Please include a callback in to Yardbase.Query.execute()'
+    console?.log result
+
   initialize: ->
     @id = new Date().getTime()
 
@@ -13,8 +18,8 @@ class Yardbase.Query
     @
 
   url: ->
-    url = "http://yardbase.herokuapp.com/things?" 
-    params = []
+    url = "#{Yardbase.host}/things.json?" 
+    params = ["jsonpCallback=Yardbase.Query.jsonpCallbacks[#{@id}]"]
     if @tag_list.length > 0
       params.push "tags=" + encodeURIComponent(@tag_list.join(','))
 
@@ -27,8 +32,7 @@ class Yardbase.Query
     url
 
   execute: (callback) ->
-    if callback?
-      YardbaseCallback = callback
+    Yardbase.Query.jsonpCallbacks[@id] = callback || @defaultCallback
     Yardbase.includeScriptTag @url()
 
 

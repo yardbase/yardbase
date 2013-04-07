@@ -1,6 +1,10 @@
 class ThingsController < InheritedResources::Base
   respond_to :html, :json
 
+  def index
+    index! callback: params[:jsonpCallback]
+  end
+
 protected
 
   def collection
