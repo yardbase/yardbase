@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  def authenticate_admin_user!
+    authenticate_user!
+    authorize! :manage, :all
+  end
+
 end

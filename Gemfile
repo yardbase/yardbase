@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 
@@ -11,7 +11,8 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'activeadmin', "0.5.1"
+gem 'activeadmin', '0.5.1'
+gem 'activeadmin-mongoid', github: 'elia/activeadmin-mongoid'
 gem 'cancan'
 gem 'decent_exposure'
 gem 'devise'
