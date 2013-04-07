@@ -3,10 +3,9 @@ require 'spec_helper'
 describe 'Coffeeshop functional spec' do
   specify 'starting to make our first coffeeshop' do
     tag = Tag.new(name: 'coffeeshop', required_fields: [
-      {name: 'name', type: 'string'},
-      {name: 'address', type: 'string'},
-      {name: 'phone_number', type: 'string'}
+      {name: 'address', type: 'string'}
     ], optional_fields: [
+      {name: 'phone_number', type: 'string'},
       {name: 'url', type: 'string'}
     ])
 

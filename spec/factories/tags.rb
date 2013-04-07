@@ -6,11 +6,11 @@ FactoryGirl.define do
       name 'coffeeshop'
 
       required_fields [
-        {name: 'address', type: 'string'},
-        {name: 'phone_number', type: 'string'}
+        {name: 'address', type: 'string'}
       ]
 
       optional_fields [
+        {name: 'phone_number', type: 'string'},
         {name: 'url', type: 'string'}
       ]
     end

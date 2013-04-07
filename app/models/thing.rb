@@ -15,7 +15,7 @@ protected
         errors.add(:tags, "tag_name #{tag_name} not found")
       else
         tag.required_fields.each do |required_field|
-          unless self[tag_name] && self[tag_name][required_field["name"].to_sym].present?
+          if !self[tag_name] || self[tag_name][required_field["name"].to_sym].nil?
             errors.add(:tags, "required_field #{required_field["name"]} not set")
           end
         end

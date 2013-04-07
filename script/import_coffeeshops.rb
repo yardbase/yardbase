@@ -1,11 +1,14 @@
+#!/usr/bin/env bundle exec rails runner
 require 'csv'
 
+Tag.delete_all
+Thing.delete_all
+
 coffeeshop_tag = Tag.create(name: 'coffeeshop', required_fields: [
-  {name: 'name', type: 'string'},
-  {name: 'address', type: 'string'},
-  {name: 'phone_number', type: 'string'}
+  {name: 'address', type: 'string'}
 ], optional_fields: [
-  {name: 'url', type: 'string'}
+  {name: 'url', type: 'string'},
+  {name: 'phone_number', type: 'string'}
 ]) unless Tag.where(name: 'coffeeshop').any?
 
 wifi_tag = Tag.create(name: 'wifi', required_fields: [
@@ -31,6 +34,6 @@ CSV.open(filename, headers: true, header_converters: :symbol) do |csv|
         url: row[:url]
       },
       wifi: wifi
-    )
+    ).tap {|thing| puts thing.errors.inspect if thing.errors.present? }
   end
 end
