@@ -1,6 +1,9 @@
 %p#notice= notice
 
+%h1= @thing.name
 
-= link_to 'Edit', edit_thing_path(@thing)
-\|
-= link_to 'Back', things_path
+%pre= JSON.pretty_generate(@thing.as_json)
+
+- if can? :edit, @thing
+  = link_to 'Edit', edit_admin_thing_path(@thing), class: 'btn'
+= link_to 'Back', things_path, class: 'btn btn-info'

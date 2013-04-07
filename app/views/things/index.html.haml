@@ -1,19 +1,14 @@
-%h1 Listing things
+%h1 ALL THE THINGS
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
+%table.table.table-striped
   - @things.each do |thing|
     %tr
-      %td= thing.name
-      %td= link_to 'Show', thing
-      %td= link_to 'Edit', edit_thing_path(thing)
-      %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to thing.name, thing
+      - if can? :edit, thing
+        %td= link_to 'Edit', edit_thing_path(thing), class: 'btn'
+      - if can? :destroy, thing
+        %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Thing', new_thing_path
+= link_to 'New Thing', new_thing_path if can? :create, Thing

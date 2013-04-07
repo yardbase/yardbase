@@ -1,9 +1,10 @@
 .jumbotron.masthead
   .container
     %h1 Madison's Yardbase
-    
-    %p List of top "things"
-    %p Some stats about how many coffeshops we have
+
+    %p
+      = link_to 'ALL THE THINGS', things_path
+      Currently tracking #{Thing.count} things!
 
     %ul.masthead-links
       %li= link_to 'GitHub Project', 'https://github.com/yardbase/yardbase'

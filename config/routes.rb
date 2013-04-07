@@ -1,13 +1,14 @@
 Yardbase::Application.routes.draw do
-  resources :tags
-  resources :things
-
-  ActiveAdmin.routes(self)
+  resources :tags, only: [:index, :show]
+  resources :things, only: [:index, :show]
 
   authenticated :user do
     root :to => 'home#index'
+    resources :tags
+    resources :things
   end
+
   root :to => "home#index"
-  devise_for :users
-  resources :users
+  ActiveAdmin.routes(self)
+  devise_for :users, ActiveAdmin::Devise.config
 end
