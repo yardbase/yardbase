@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe ThingsController do
   describe 'index' do
+    before do
+      FactoryGirl.create(:tag, :coffeeshop)
+      FactoryGirl.create(:tag, :wifi)
+    end
+
     context 'searching' do
       describe 'tags parameter' do
-
         context 'with one item' do
           let(:params) { {tags: 'coffeeshop', format: :json} }
           before do
-            FactoryGirl.create(:tag, :coffeeshop)
-            FactoryGirl.create(:tag, :wifi)
             @coffeeshop = FactoryGirl.create(:coffeeshop)
             @person = FactoryGirl.create(:person)
           end
@@ -24,7 +26,9 @@ describe ThingsController do
         end
 
         context 'with multiple tags' do
-          it 'returns only objects that have all the specified tags'
+          it 'returns only objects that have all the specified tags' do
+
+          end
         end
       end
 
@@ -33,8 +37,6 @@ describe ThingsController do
 					let(:params) { {name: 'Indie Coffee'} }
 
 					before do
-            FactoryGirl.create(:tag, :coffeeshop)
-            FactoryGirl.create(:tag, :wifi)
             @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
 					end
 
@@ -48,8 +50,6 @@ describe ThingsController do
 					let(:params) { {'coffeeshop.url' => 'http://indiecoffeehouse.com'} }
 
 					before do
-            FactoryGirl.create(:tag, :coffeeshop)
-            FactoryGirl.create(:tag, :wifi)
             @indie_coffee = FactoryGirl.create(:coffeeshop, name: 'Indie Coffee')
 						Thing.where(name: 'Indie Coffee').update(:"coffeeshop.url" => 'http://indiecoffeehouse.com')
 					end
