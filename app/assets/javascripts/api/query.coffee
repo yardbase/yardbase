@@ -2,9 +2,6 @@ class Yardbase.Query
   queryParams: {}
   tag_list: []
   @callbacks: {}
-  defaultCallback: (result) -> 
-    console?.log 'Please include a callback in to Yardbase.Query.execute()'
-    console?.log result
 
   constructor: ->
     @callbackKey = new Date().getTime()
@@ -33,7 +30,7 @@ class Yardbase.Query
     url
 
   execute: (callback) ->
-    Yardbase.Query.callbacks[@callbackKey] = callback || @defaultCallback
+    Yardbase.Query.callbacks[@callbackKey] = callback || YardbaseCallback
     Yardbase.includeScriptTag @url()
 
 
