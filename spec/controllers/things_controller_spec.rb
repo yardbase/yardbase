@@ -14,20 +14,51 @@ describe ThingsController do
           before do
             @coffeeshop = FactoryGirl.create(:coffeeshop)
             @person = FactoryGirl.create(:person)
+            @library = FactoryGirl.create(:library)
           end
           it 'returns objects that have the tag' do
             get :index, params
             expect(assigns[:things].to_a).to include(@coffeeshop)
           end
-          it 'does not return objects that do not have the tag' do
+          it 'does not return objects that do not have any tags' do
             get :index, params
             expect(assigns[:things].to_a).to_not include(@person)
           end
+          it 'does not return objects that do not have the tag, but have a different tag' do
+            get :index, params
+            expect(assigns[:things].to_a).to_not include(@library)
+          end
         end
 
-        context 'with multiple tags' do
-          it 'returns only objects that have all the specified tags' do
+        context 'with multiple tags, wifi first' do
+          let(:params) { {tags: 'wifi,coffeeshop', format: :json} }
+          before do
+            @coffeeshop = FactoryGirl.create(:coffeeshop)
+            @library = FactoryGirl.create(:library)
+          end
+          it 'returns objects that have both the tags' do
+            get :index, params
+            expect(assigns[:things].to_a).to include(@coffeeshop)
+          end
+          it 'does not return objects that only have one of the tags' do
+            get :index, params
+            expect(assigns[:things].to_a).to_not include(@library)
+          end
+        end
 
+        context 'with multiple tags, coffeeshop first' do
+          let(:params) { {tags: 'coffeeshop,wifi', format: :json} }
+          before do
+            @coffeeshop = FactoryGirl.create(:coffeeshop)
+            @library = FactoryGirl.create(:library)
+          end
+          it 'returns objects that have both the tags' do
+            get :index, params
+            expect(assigns[:things].to_a).to include(@coffeeshop)
+          end
+          it 'does not return objects that only have one of the tags' do
+            get :index, params
+            expect(assigns[:things].to_a).to_not include(@library)
           end
         end
       end

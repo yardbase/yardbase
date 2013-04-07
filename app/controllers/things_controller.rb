@@ -6,10 +6,9 @@ protected
   def collection
     @things ||= begin
 			chain = end_of_association_chain
-			nested_keys = []
 
 			request.query_parameters.each do |key, value|
-				chain = chain.where(key => params[key])
+        chain = chain.all(key => value.split(','))
 			end
 
 			chain
