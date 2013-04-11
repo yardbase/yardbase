@@ -1,5 +1,5 @@
 window.Yardbase ||=
-  host: "http://madison.yardbase.org"
+  host: "http://<%= Yardbase::HOST %>"
   includeScriptTag: (url) ->
     script = document.createElement 'script'
     script.setAttribute 'type', 'text/javascript'
